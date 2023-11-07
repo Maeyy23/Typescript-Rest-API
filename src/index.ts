@@ -4,9 +4,11 @@ import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
 import compression from "compression";
 import cors from "cors";
+import dotenv from "dotenv";
+dotenv.config();
 
 const app = express();
-
+const PORT = process.env.PORT || 3000
 app.use(cors({
     credentials: true,
 }))
@@ -17,6 +19,6 @@ app.use(bodyParser.json());
 
 const server = http.createServer(app);
 
-server.listen(8080, ()=>{
-    console.log("Server is listening at port 8080")
+server.listen(PORT, ()=>{
+    console.log(`Server is listening at port ${PORT}`)
 });
